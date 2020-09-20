@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en" data-env=environment)
+  head
+    meta(charset="UTF-8")
+    title Hot MEN
+    meta(name="description" content="A Mongo Express Node HMR Boilerplate.")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="environment", content=environment)
+    meta(name="version", content=version)
+    meta(name="mobile-web-app-capable", content="yes")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="application-name", content="HMR")
+    meta(name="apple-mobile-web-app-title", content="HMR")
+    meta(name="theme-color", content="#000000")
+    meta(name="msapplication-navbutton-color", content="#000000")
+    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+    meta(name="msapplication-starturl", content="/")
+
+    link(rel="manifest", href="/web-manifest.json")
+    link(rel="icon", sizes="256x256", href="/favicon.png", type="image/png")
+    link(rel="apple-touch-icon", sizes="256x256", href="/favicon.png")
+  
+    if environment === "development"
+      link(rel="stylesheet", href=`${asset('/styles/main.css')}`)
+    else
+      style!= inline('/styles/critical.css')
+      link(rel="preload", href=`${asset('/styles/style.css')}`, as="style", onload="this.onload=null;this.rel='stylesheet'")
+
+  body
+    h1 Hot MEN
+    h2= version
+    script(src=`${asset('/scripts/main.js')}`, defer)
