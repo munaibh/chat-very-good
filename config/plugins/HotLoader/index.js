@@ -9,7 +9,7 @@ const WebpackWatcher = function() {
   
   const initStaticWatcher = () => {
     const viewsDirectory = path.join(process.cwd(), 'views')
-    const chokidarWatcher = chokidar.watch(viewsDirectory)
+    const chokidarWatcher = chokidar.watch(viewsDirectory, { usePolling: true })
     chokidarWatcher.on('change', _ => {
       hotMiddleWareInstance.publish({action: 'reload'})
     })
