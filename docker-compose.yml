@@ -3,7 +3,6 @@ version: '3'
 services:
   nodejs:
     build: .
-    container_name: nodejs
     command: npm run serve
     restart: unless-stopped
     env_file: .env
