@@ -1,6 +1,6 @@
 {
-  "name": "Hot Men",
-  "short_name": "Hot Men",
+  "name": "ChatVeryGood",
+  "short_name": "ChatVeryGood",
   "lang": "en-GB",
   "start_url": "/",
   "display": "standalone",
@@ -8,11 +8,11 @@
   "background_color": "#000000",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon.ico",
       "sizes": "256x256"
     },
     {
-      "src": "favicon.png",
+      "src": "favicon.ico",
       "sizes": "512x512"
     }
   ]
