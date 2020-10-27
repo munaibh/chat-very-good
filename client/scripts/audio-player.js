@@ -81,11 +81,11 @@
       if(this.track.volume !== 0 || this.currentVolume === 0) {
         this.currentVolume = this.track.volume;
         this.track.volume = 0;
-        this.vButton.style.backgroundImage = 'url(../images/mute_icon.svg)';
+        this.vButton.style.backgroundImage = `url(${require('../images/mute_icon.svg')})`;
       }
       else {
         this.track.volume = this.currentVolume || 0;
-        this.vButton.style.backgroundImage = 'url(../images/volume_icon.svg)';
+        this.vButton.style.backgroundImage = `url(${require('../images/volume_icon.svg')})`;
       }
       this.updateVolume(this.track.volume);
     },
@@ -111,7 +111,7 @@
       var seekbarWidth = this.vSeekbar.offsetWidth;
       if(currentWidth < 0) currentWidth = 0;
       if(currentWidth >= seekbarWidth) currentWidth = seekbarWidth;
-      this.vButton.style.backgroundImage = (trackVolume) ? 'url(../images/volume_icon.svg)' : 'url(../images/mute_icon.svg)';
+      this.vButton.style.backgroundImage = (trackVolume) ? `url(${require('../images/volume_icon.svg')})` : `url(${require('../images/mute_icon.svg')})`;
       this.track.volume = currentWidth/seekbarWidth;
       this.updateVolume(this.track.volume);
     },
@@ -140,12 +140,12 @@
 
       if(!track.paused && !track.ended) {
         track.pause();
-        button.backgroundImage = 'url(../images/play_icon.svg)';
+        button.backgroundImage = `url(${require('../images/play_icon.svg')})`;
         window.clearInterval(this.interval);
       }
       else {
         track.play();
-        button.backgroundImage = 'url(../images/pause_icon.svg)';
+        button.backgroundImage = `url(${require('../images/pause_icon.svg')})`;
         this.interval = setInterval(this.update.bind(this), 200);
         this.update();
       }
@@ -167,7 +167,7 @@
         this.track.pause();
         this.progress.style.width = seekbarWidth + "px";
         this.handle.style.left = seekbarWidth  - (this.handle.offsetWidth/2) + "px"; // just added
-        this.buttons.style.backgroundImage = 'url(../images/play_icon.svg)';
+        this.buttons.style.backgroundImage = `url(${require('../images/play_icon.svg')})`;
         window.clearInterval(this.interval);
       }
     },
