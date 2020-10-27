@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-html(lang="en" data-env=environment)
-  head
-    meta(charset="UTF-8")
-    title ChatVeryGood
-    meta(name="description" content="A podcast with: tamoorh, 2plus2isJoe, Scully1888, Samwrite and GaryDooton. Let us take you on a tangent.")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(name="environment", content=environment)
-    meta(name="version", content=version)
-    meta(name="mobile-web-app-capable", content="yes")
-    meta(name="apple-mobile-web-app-capable", content="yes")
-    meta(name="application-name", content="HMR")
-    meta(name="apple-mobile-web-app-title", content="HMR")
-    meta(name="theme-color", content="#000000")
-    meta(name="msapplication-navbutton-color", content="#000000")
-    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
-    meta(name="msapplication-starturl", content="/")
+extends partials/layout
 
-    link(rel="manifest", href="/web-manifest.json")
-    link(rel="icon", sizes="256x256", href="/favicon.png", type="image/png")
-    link(rel="apple-touch-icon", sizes="256x256", href="/favicon.png")
-  
-    if environment === "development"
-      link(rel="stylesheet", href=`${asset('/styles/main.css')}`)
-    else
-      style!= inline('/styles/critical.css')
-      link(rel="preload", href=`${asset('/styles/style.css')}`, as="style", onload="this.onload=null;this.rel='stylesheet'")
+block content
+  for track in tracks
+    .podcast__entry(data-track=track.id, itemscope, itemtype="http://schema.org/CreativeWork")
+      .podcast__information
+        a.podcast__thumbnail(href=`/${track.permalink}`, style=`background-image: url(${track.artwork_url.replace('large', 't300x300')})`)
+        .podcast__content
+          meta(itemprop="genre" content="podcast")
+          meta(itemprop="thumbnailUrl" content=track.artwork_url)
+          meta(itemprop="dateCreated" content=track.created_at)
 
-  body
-    h1 ChatVeryGood 
-    h2= version
-    script(src=`${asset('/scripts/main.js')}`, defer)
+          small= toDate(track.created_at)
+          h2: a(href=`/${track.permalink}`): span(itemprop="name")= track.title
+          a.btn(class="play__btn", href="/"): svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 64 64'): path(d='M8.2 1.7v60.7L55.8 32 8.2 1.7z')
+          a.btn(href=`http://twitter.com/share?text=I just listened to&amp;url=${baseURL}/${track.permalink}&amp;via=chatVerygoodpod` title="Share on Twitter" rel="nofollow" target="_blank"): svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 48 48'): path(d='M39.8 31.2c-2.3 0-4.4.9-5.9 2.6l-17.5-8.6c.1-.4.1-.8.1-1.2 0-.4 0-.8-.1-1.2l17.5-8.5c1.5 1.6 3.7 2.6 6 2.6 4.5 0 8.2-3.7 8.2-8.2S44.4.5 39.9.5s-8.2 3.7-8.2 8.2c0 .4 0 .8.1 1.2l-17.5 8.5c-1.5-1.6-3.7-2.6-6-2.6C3.8 15.8.1 19.5.1 24c0 4.5 3.7 8.2 8.2 8.2 2.3 0 4.4-.9 5.9-2.6l17.5 8.6c-.1.4-.1.8-.1 1.2 0 4.5 3.7 8.2 8.2 8.2s8.2-3.7 8.2-8.2c0-4.6-3.7-8.2-8.2-8.2z')
+          a.btn(href=`${track.download_url}?client_id=99bwMlCt7cxnR65zfXwrIvPMQykyRlzh`)  Download #[span= `(MP3 ${toBytes(track.original_content_size)}) MB`]
+          span(itemprop="author", itemscope, itemtype="http://schema.org/Person"): span(class="author", itemprop="name") ChatVerygood
+
+      .player: include partials/player
+
+  .pagination
+    if(hasNext)
+      a(rel="prev" href=`/page/${nextPage}`) Older Episodes
+
+    if(currPage > 1)
+      if(currPage==2)
+        a(rel="next" href=`/`) Newer Episodes
+      else
+        a(rel="next" href=`/page/${prevPage}`) Newer Episodes

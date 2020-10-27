@@ -1,0 +1,19 @@
+header(class="header", itemscope, itemtype="http://schema.org/WPHeader")
+  .header__center
+    h1: a(title="ChatVeryGood", href="/")
+      include logo.pug
+      meta(itemprop="headline" content="ChatVeryGood")
+
+    nav(class="header__nav")
+      ul(itemscope itemtype="http://schema.org/SiteNavigationElement")
+        li: a(itemprop="url", href="https://itunes.apple.com/gb/podcast/chat-very-good/id924260141?mt=2", rel="nofollow", target="_blank"): img(src=`${asset('/images/itunes_icon.svg')}`, alt="chatverygood itunes link")
+        li: a(itemprop="url", href="https://twitter.com/chatverygoodpod", rel="nofollow", target="_blank"): img(src=`${asset('/images/twitter_icon.svg')}`, alt="chatverygood twitter link")
+        li: a(itemprop="url", href="https://soundcloud.com/chatverygood", rel="nofollow", target="_blank"): img(src=`${asset('/images/soundcloud_icon.svg')}`, alt="chatverygood soundcloud link")
+        li: a(class="header__info", href="/"): img(src=`${asset('/images/share_icon.svg')}`, alt="chatverygood soundcloud link")
+
+    if(title=="Podcasts")
+      p(class="header__desc", itemprop="description") Hello! Thank you for listening to Chat Very Good, a podcast brought to you by: Tamoor Hussain, Chris Scullion, Joe Skrebels, Gary Dooton and Sam White. We discuss creepy/weird internet videos and video games, whatever they are.
+
+  .header_slant
+    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 1116 23.3", xml:space="preserve")
+      polygon(class="st0", points="0 23.3 1116 23.3 1116 0 ")

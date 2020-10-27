@@ -1,0 +1,100 @@
+.footer
+  margin-top: 3rem
+
+  h3
+    font-size: 1.4rem
+    padding: 3rem 0 2rem 0
+    text-align: center
+    display: inline-block
+    width: 100%
+  copyright
+    width: 86%
+    max-width: 57.63em
+    text-align: center
+    padding: 2rem 0
+    display: inline-block
+    border-top: 1px solid $dark_grey
+    margin: 3rem auto 0 auto
+    display: block
+
+.footer__slant svg
+  width: 100%
+  display: block
+  fill: $medium_grey
+
+.footer__content
+  background-color: $medium_grey
+
+
+.footer__center
+  width: 90%
+  max-width: 57.63em
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  flex-direction: row
+  flex-wrap: wrap
+
+.footer__host
+  flex: 1
+  text-align: center
+
+.host__avatar
+  width: 5em
+  height: 5em
+  background-size: cover
+  background-position: center
+  display: inline-block
+  margin-bottom: .2em
+  border-radius: 50%
+
+.host__follow
+  display: inline-block
+  font-size: .9rem
+  background: #00aced
+  padding: 0em .7em
+  line-height: 2em
+  border-radius: .2em
+  margin-top: 0.7em
+  text-decoration: none
+
+  svg
+    display: inline-block
+    vertical-align: middle
+    width: 1.2em
+    margin-right: .3em
+    fill: #0677a2
+
+  span
+    vertical-align: middle
+    color: white
+
+.host__name
+  font-weight: 500
+  color: $black
+
+
+
+
+@media screen and (max-width: 775px)
+
+
+
+  .footer__host
+    flex: 1 1 100%
+    margin-bottom: 2rem
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:last-child
+      margin: 0
+      
+  .host__name
+    display: none
+
+  .host__avatar
+    margin-right: 1rem
+
+  .host__follow
+    min-width: 8em

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+html(lang="en" data-env=environment)
+  head
+    //- SEO Name, Keywords and description
+    meta(charset="utf-8")
+    title #{title} | ChatVeryGood
+    meta(name="theme-color", content="#F18455")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="keywords", content="ChatVeryGood, Chat, Very, Good, Podcast, Gaming, Comedy")
+    meta(name="description", content="ChatVeryGood is a Podcast brought to you by: Tamoor Hussain, Chris Scullion, Joe Skrebels, Gary Dooton and Sam White. We discuss creepy/weird internet videos and video games, whatever they are.")
+    link(rel="canonical", href=`${baseURL}${pathURL}`)
+    link(rel="alternate", type="application/rss+xml", title="ChatVeryGood Podcast", href=`${baseURL}/feed.xml`)
+    link(rel="icon", sizes="256x256", href="/favicon.ico", type="image/png")
+
+    //- Open Graph and Twitter Cards
+    meta(name="twitter:card", content="ChatVeryGood is a Podcast brought to you by: Tamoor Hussain, Chris Scullion, Joe Skrebels, Gary Dooton and Sam White. We discuss creepy/weird internet videos and video games, whatever they are.")
+    meta(name="twitter:site", content="@chatverygoodpod")
+    meta(name="twitter:creator", content="@chatverygoodpod")
+    meta(property="og:url", content=`${baseURL}${pathURL}`)
+    meta(property="og:title", content="ChatVeryGood Podcast")
+    meta(property="og:description", content="ChatVeryGood is a Podcast brought to you by: Tamoor Hussain, Chris Scullion, Joe Skrebels, Gary Dooton and Sam White. We discuss creepy/weird internet videos and video games, whatever they are.")
+    meta(property="og:image", content=`${asset('/images/logo.svg')}`)
+
+    //- External Links
+    link(rel="manifest", href="/web-manifest.json")
+  
+    if environment === "development"
+      link(rel="stylesheet", href=`${asset('/styles/main.css')}`)
+    else
+      style!= inline('/styles/critical.css')
+      link(rel="preload", href=`${asset('/styles/style.css')}`, as="style", onload="this.onload=null;this.rel='stylesheet'")
+
+  body(itemscope, itemtype="http://schema.org/WebPage")
+
+    include modal
+    include header
+    main(itemprop="mainContentOfPage")
+      section.podcasts: block content
+    include footer.pug
+    include scripts.pug

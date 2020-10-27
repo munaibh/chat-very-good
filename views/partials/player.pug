@@ -1,0 +1,23 @@
+.podcast__player
+  audio(controls=false, preload, class="player__track")
+    if(title!="Podcasts")
+      source(src=`${track.stream_url}?client_id=99bwMlCt7cxnR65zfXwrIvPMQykyRlzh` type="audio/mp3")
+
+  .player__buttons
+    button(type="button", class="play__button")
+    .player__times
+      span.times__current 0:00
+      span.times__seperator  &nbsp; /  &nbsp;
+      span.times__total ?:??
+  .player__controls
+    .player__seekbar
+      .player__buffered
+      .seekbar__progress
+        .seekbar__handle
+
+  .volume__buttons
+    button(type="button", class="volume__button")
+  .volume__controls
+    .volume__seekbar
+      .volume__progress
+        .volume__handle

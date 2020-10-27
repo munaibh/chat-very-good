@@ -1,0 +1,47 @@
+.modal__overlay
+  background: rgba(0,0,0,0.94)
+  z-index: 5
+  opacity: 0
+  transition: opacity 0.2s ease-in
+  pointer-events: none
+
+.modal--open
+  overflow: hidden
+  .modal__overlay
+    +position(absolute, 0 0 0 0)
+    opacity: 1
+    pointer-events: all
+
+  .modal__content
+    transform: translate(-50%, -50%) scale(1)
+
+.modal__content
+  background: white
+  width: 90%
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) scale(0)
+  padding: 5rem 2rem
+  text-align: center
+  border-radius: 0.3em
+  transition: transform 0.2s 0.2s cubic-bezier(0, 0, 0.1, 1.24)
+  max-width: 60rem
+
+  a
+    color: $orange
+  p
+    margin-bottom: 1rem
+    font-size: 1.2rem
+
+    &:last-child
+      margin: 0
+
+.modal__close
+  position: absolute
+  top: 2rem
+  right: 2rem
+  background: transparent
+  border: 0
+  opacity: 0.3
+  width: 1.5rem

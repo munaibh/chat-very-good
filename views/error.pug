@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    //- SEO Name, Keywords and description
+    meta(charset="utf-8")
+    title #{status} | ChatVeryGood
+    meta(name="theme-color", content="#F18455")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="keywords", content="ChatVeryGood, Chat, Very, Good, Podcast, Gaming, Comedy")
+    meta(name="description", content="ChatVeryGood is a Podcast brought to you by: Tamoor Hussain, Chris Scullion, Joe Skrebels, Gary Dooton and Sam White. We discuss creepy/weird internet videos and video games, whatever they are.")
+    link(rel="alternate", type="application/rss+xml", title="ChatVeryGood Podcast", href=`${baseURL}/feed.xml`)
+    link(rel="shortcut icon", href="/img/favicon.ico", type="image/x-icon")
+
+    //- External Links
+    link(rel="manifest", href="/web-manifest.json")
+  
+    if environment === "development"
+      link(rel="stylesheet", href=`${asset('/styles/main.css')}`)
+    else
+      style!= inline('/styles/critical.css')
+      link(rel="preload", href=`${asset('/styles/style.css')}`, as="style", onload="this.onload=null;this.rel='stylesheet'")
+
+body(itemscope, itemtype="http://schema.org/WebPage")
+  div.error
+    .error__logo: include partials/logo.pug
+    h1= `${status} (${message})`
+    .pagination: a(href="/") Return Home
+
+
+

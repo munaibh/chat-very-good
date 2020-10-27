@@ -1,0 +1,24 @@
+extends partials/layout
+
+block content
+  .podcast__entry.episode--show(data-track=track.id, itemscope, itemtype="http://schema.org/CreativeWork")
+    .podcast__information
+      a.podcast__thumbnail(href=`/${track.permalink}`, style=`background-image: url(${track.artwork_url.replace('large', 't300x300')})`)
+      .podcast__content
+        meta(itemprop="genre" content="podcast")
+        meta(itemprop="thumbnailUrl" content=track.artwork_url)
+        meta(itemprop="dateCreated" content=track.created_at)
+
+        small= toDate(track.created_at)
+        h2: a(href=`/${track.permalink}`): span(itemprop="name")= track.title
+        a.btn(class="play__btn", href="/"): svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 64 64'): path(d='M8.2 1.7v60.7L55.8 32 8.2 1.7z')
+        a.btn(href=`http://twitter.com/share?text=I just listened to&amp;url=${baseURL}/${track.permalink}&amp;via=chatVerygoodpod` title="Share on Twitter" rel="nofollow" target="_blank"): svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 48 48'): path(d='M39.8 31.2c-2.3 0-4.4.9-5.9 2.6l-17.5-8.6c.1-.4.1-.8.1-1.2 0-.4 0-.8-.1-1.2l17.5-8.5c1.5 1.6 3.7 2.6 6 2.6 4.5 0 8.2-3.7 8.2-8.2S44.4.5 39.9.5s-8.2 3.7-8.2 8.2c0 .4 0 .8.1 1.2l-17.5 8.5c-1.5-1.6-3.7-2.6-6-2.6C3.8 15.8.1 19.5.1 24c0 4.5 3.7 8.2 8.2 8.2 2.3 0 4.4-.9 5.9-2.6l17.5 8.6c-.1.4-.1.8-.1 1.2 0 4.5 3.7 8.2 8.2 8.2s8.2-3.7 8.2-8.2c0-4.6-3.7-8.2-8.2-8.2z')
+        a.btn(href=`${track.download_url}?client_id=99bwMlCt7cxnR65zfXwrIvPMQykyRlzh`)  Download #[span= `(MP3 ${toBytes(track.original_content_size)}) MB`]
+        span(itemprop="author", itemscope, itemtype="http://schema.org/Person"): span(class="author", itemprop="name") ChatVerygood
+
+    .player
+       include partials/player
+       .player__description!= toParagraphs(track.description)
+
+  .pagination
+    a(href="/") View More Episodes

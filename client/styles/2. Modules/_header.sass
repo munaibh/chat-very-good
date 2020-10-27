@@ -1,0 +1,101 @@
+.header
+  position: relative
+  background: $orange
+  font-size: 1rem
+
+  &:before
+    content: ''
+    +position(absolute, 0 0 0 -8rem)
+    background:
+      image: url(../images/header_bg.png)
+      size: contain
+      repeat: no-repeat
+    opacity: 0.15
+    z-index: 0
+
+// HEADER LOGO
+.header__center
+  width: 90%
+  position: relative
+  z-index: 1
+  max-width: 57.63em
+  margin: 0 auto
+  text-align: center
+  padding: 5.625em 0 11.25em 0
+
+  a
+    width: 90%
+    max-width: 11.88rem
+    display: inline-block
+
+  svg
+    fill: $white
+
+// NAVIGATION ICONS
+.header__nav ul li
+  padding: 2em 0
+  display: inline-block
+
+  &:last-child
+    display: none
+
+  a
+    display: block
+    width: 2.5em
+    opacity: 0.35
+    margin: 0 0.9375em
+    transition: opacity 0.35s ease
+
+    &:hover
+      opacity: 1
+
+    img
+      +size(100%)
+      object-fit: cover
+
+
+//  DESCRIPTION
+.header__desc
+  width: 85%
+  font-size: 1.125em
+  max-width: 44.44em
+  display: inline-block
+  font-weight: 600
+  opacity: 0.67
+  line-height: 1.5em
+  padding-top:  1.778em
+  position: relative
+  color: $dark_orange
+
+  &::before
+    content: ''
+    +size(50% 2px)
+    background: $dark_orange
+    display: block
+    +position(absolute, 0 null 0 50%)
+    transform: translateX(-50%)
+    opacity: 0.35
+
+// SLANT
+.header_slant
+  +position(absolute, null 0 0 0)
+
+  svg
+    display: block
+    fill: $light_grey
+
+
+
+// MEDIA QUERIES
+@media screen and (max-width: 500px)
+  .header
+    font-size: 0.9rem
+
+    a
+      max-width: 9.88rem
+
+  .header__desc
+    display: none
+
+  .header__nav ul li:last-child
+    display: inline-block

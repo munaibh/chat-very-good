@@ -1,0 +1,157 @@
+.player
+  padding: 0 1.875rem
+  overflow: hidden
+  height: 0
+  background: $light_grey
+  transition: all 0.3s cubic-bezier(0, 0, 0.12, 1.73)
+
+.player__description
+  text-align: center
+  margin: 2rem 0
+
+  p
+    margin-bottom: 1rem
+
+.episode--show .player
+  height: auto
+  padding: 1.875rem
+
+.podcast__player
+  width: 100%
+  /* overflow: auto */
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  display: flex
+  flex-direction: row
+  align-items: center
+  height: 2.5em
+  padding: 0 .5em
+  background: white
+  border: 1px solid #ccc
+
+.player__buttons
+  flex-grow: 0
+  flex-shrink: 0
+  height: 100%
+
+.play__button
+  background-image: url(../images/play_icon.svg)
+  border: 0
+  background-size: contain
+  height: 100%
+  background-repeat: no-repeat
+  background-position: center center
+  float: left
+  background-color: transparent
+  width: 25px
+
+
+.player__times
+  float: left
+  line-height: 315%
+  font-size: 12px
+  letter-spacing: -0.7px
+  margin: 0 .3em
+
+.player__controls
+  flex: 1 1 0
+  height: 100%
+  display: flex
+  align-items: center
+  padding: 0 .5em
+
+
+.player__seekbar
+  width: 100%
+  height: 2px
+  background: #dadada
+  position: relative
+
+
+.player__buffered
+  background: #9f9f9f
+  position: absolute
+  left: 0
+  width: 0%
+  height: 2px
+  right: 0
+  bottom: 0
+
+
+.seekbar__progress
+  width: 0px
+  height: 2px
+  position: relative
+  float: left
+  background: $orange
+
+
+.volume__buttons
+  flex-grow: 0
+  flex-shrink: 0
+
+
+.volume__button
+  background-image: url(../images/volume_icon.svg)
+  border: 0
+  background-size: contain
+  height: 24px
+  background-repeat: no-repeat
+  background-position: center center
+  float: left
+  background-color: transparent
+  width: 30px
+
+.volume__controls
+  max-width: 100px
+  padding: 0 .5em
+  flex: 1 1 0
+  height: 100%
+  display: flex
+  align-items: center
+  padding: 0 .5em
+
+
+.volume__seekbar
+  width: 100%
+  height: 2px
+  background: #dadada
+  position: relative
+
+.seekbar__handle
+  width: 12px
+  height: 12px
+  background: $orange
+  position: absolute
+  top: -5px
+  border-radius: 50%
+  cursor: pointer
+
+
+.volume__progress
+  width: 0px
+  height: 2px
+  position: relative
+  float: left
+  background: $orange
+  transition: all 0.3s ease
+
+
+
+.volume__handle
+  width: 12px
+  height: 12px
+  background: $orange
+  position: absolute
+  top: -5px
+  border-radius: 50%
+  cursor: pointer
+
+@media screen and (max-width: 775px)
+  .volume__button
+    display: none
+
+  .volume__controls
+    display: none

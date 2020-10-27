@@ -1,0 +1,33 @@
+.pagination
+  padding: 0 0 45px 0
+  width: 90%
+  max-width: 57.63em
+  text-align: center
+  margin: 0 auto
+  overflow: auto
+
+  a
+    font-size: 1rem
+    display: inline-block
+    border: 1px solid $black
+    color: $black
+    font-weight: 600
+    border-radius: 0.3rem
+    padding: 0.8rem 1.5rem
+    text-decoration: none
+    transition: all 0.35s ease
+
+    &:hover
+      color: $white
+      background: $black
+
+    &[rel="prev"]
+      float: left
+
+    &[rel="next"]
+      float: right
+
+@media screen and (max-width: 600px)
+  .pagination a
+    width: 100%
+    margin-bottom: 1em
