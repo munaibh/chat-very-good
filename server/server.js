@@ -4,10 +4,8 @@ import helpers from './helpers'
 import secure from './helpers/forceSecure'
 import compression  from 'compression'
 import hotLoader from '../config/plugins/HotLoader'
-import database from './lib/database'
 
 const app = express()
-const _dbInstance = database.init()
 const _compiler = __DEV__ && hotLoader.watch(app)
 
 app.set('views', path.join(__dirname, '..', 'views'))
