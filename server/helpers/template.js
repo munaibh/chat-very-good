@@ -28,7 +28,7 @@ const PugHelpers = function() {
     return inlineCache[assetPath] = tryCatch(fs.readFileSync(filePath, 'utf8').trim(), '')
   }
 
-  function middleware(req, res, next) {
+  function middleware(_req, res, next) {
     res.locals.version = version
     res.locals.environment = environment
     res.locals.inline = inline
