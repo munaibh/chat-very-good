@@ -4,15 +4,15 @@
   "lang": "en-GB",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#F18455",
+  "background_color": "#F18455",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "256x256"
     },
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "512x512"
     }
   ]
