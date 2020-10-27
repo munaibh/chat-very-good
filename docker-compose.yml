@@ -7,7 +7,10 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
+      - CHOKIDAR_USEPOLLING=true
       - APP_PORT=$APP_PORT
+      - SOUNDCLOUD_ID=$SOUNDCLOUD_ID
+      - SOUNDCLOUD_SECRET=$SOUNDCLOUD_SECRET
     ports:
       - "${APP_PORT:-80}:8080"
     volumes:
