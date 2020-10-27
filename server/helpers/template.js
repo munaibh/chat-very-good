@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import * as functions from './functions'
 
 const tryCatch = (value, fallback)  => {
   const isFunc = typeof value === 'function'
@@ -33,6 +34,7 @@ const PugHelpers = function() {
     res.locals.environment = environment
     res.locals.inline = inline
     res.locals.asset = path => manifest[path] ? manifest[path] : path
+    res.locals = { ...res.locals, ...functions}
     next()
   }
 
